@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const port = 3000;
 const mysql = require("mysql2");
 const cors = require("cors");
 
@@ -18,6 +17,10 @@ const db = mysql.createPool({
   user: user,
   password: password,
   database: database,
+});
+
+app.get("/", (req, res) => {
+  res.send(`Servidor Funcionando na URL da solicitação: ${req.protocol}://${req.get("host")}${req.originalUrl}`);
 });
 
 app.get("/getNotes", (req, res) => {
@@ -73,6 +76,6 @@ app.delete("/delete/:id", (req, res) => {
   });
 });
 
-app.listen(process.env.PORT || port, () => {
-  console.log(`Example app listening on port ${port}!`);
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening on port ${process.env.PORT}!`);
 });
