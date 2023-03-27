@@ -8,6 +8,7 @@ const host = process.env.HOST;
 const user = process.env.USER;
 const password = process.env.PASSWORD;
 const database = process.env.DATABASE;
+const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +17,7 @@ const db = mysql.createPool({
   host: host,
   user: user,
   password: password,
+  port: port,
   database: database,
 });
 
