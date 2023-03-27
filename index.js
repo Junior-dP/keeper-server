@@ -20,7 +20,7 @@ const db = mysql.createPool({
 });
 
 app.get("/", (req, res) => {
-  res.send(`host: ${host} user: ${user} password: ${password} database: ${database} Servidor Funcionando na URL da solicitação: ${req.protocol}://${req.get("host")}${req.originalUrl}`);
+  res.send(`Servidor Funcionando na URL da solicitação: ${req.protocol}://${req.get("host")}${req.originalUrl}`);
 });
 
 app.get("/getNotes", (req, res) => {
