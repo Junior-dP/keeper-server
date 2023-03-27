@@ -53,7 +53,7 @@ app.put("/edit", (req, res) => {
   const { title } = req.body;
   const { content } = req.body;
 
-  let SQL = "UPDATE kepper SET title = ?, content = ? WHERE idkepper = ?";
+  let SQL = "UPDATE kepper SET title = ?, content = ? WHERE id = ?";
   db.query(SQL, [title, content, id], (err, result) => {
     if (err) {
       console.log(err);
@@ -66,7 +66,7 @@ app.put("/edit", (req, res) => {
 app.delete("/delete/:id", (req, res) => {
   const { id } = req.params;
 
-  let SQL = "DELETE FROM kepper WHERE idkepper = ?";
+  let SQL = "DELETE FROM kepper WHERE id = ?";
   db.query(SQL, [id], (err, result) => {
     if (err) {
       console.log(err);
