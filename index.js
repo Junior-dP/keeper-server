@@ -21,9 +21,11 @@ const db = mysql.createPool({
   database: database,
 });
 
-
-
 app.get("/", (req, res) => {
+  res.send(`Servidor Funcionando na URL da solicitação: ${req.protocol}://${req.get("host")}${req.originalUrl}`);
+});
+
+app.get("/getNotes", (req, res) => {
   let SQL = "SELECT * FROM kepper";
   db.query(SQL, (err, result) => {
     if (err) {
